@@ -1,0 +1,15 @@
+<h1>Edit Property</h1>
+
+<%= form_with model: [:admin, @property] do |f| %>
+  <p>Title: <%= f.text_field :title %></p>
+  <p>Location: <%= f.text_field :location %></p>
+  <p>Description: <%= f.text_area :description %></p>
+  <p>Token Address: <%= f.text_field :token_address %></p>
+  <p>Image URL: <%= f.text_field :image_url %></p>
+  <p>Total Tokens: <%= f.number_field :total_tokens %></p>
+  <p>Available Tokens: <%= f.number_field :available_tokens %></p>
+  <p>Price per Token: <%= f.number_field :price_per_token, step: 0.01 %></p>
+  <p>Annual Yield (%): <%= f.number_field :annual_rent_yield, step: 0.1 %></p>
+
+  <%= f.submit "Update Property" %>
+<% end %>

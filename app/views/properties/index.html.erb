@@ -1,0 +1,13 @@
+<h1>Available Properties</h1>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;">
+  <% @properties.each do |property| %>
+    <div style="background:white;padding:15px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+      <h3><%= property.title %></h3>
+      <p><strong>Location:</strong> <%= property.location %></p>
+      <p><strong>Price per Token:</strong> $<%= property.price_per_token %></p>
+
+      <%= link_to "View Details", property_path(property), style:"color:blue;" %>
+    </div>
+  <% end %>
+</div>

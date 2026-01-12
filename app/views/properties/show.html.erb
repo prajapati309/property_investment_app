@@ -1,0 +1,19 @@
+<h1><%= @property.title %></h1>
+
+<p><strong>Location:</strong> <%= @property.location %></p>
+<p><strong>Description:</strong> <%= @property.description %></p>
+<p><strong>Token Price:</strong> $<%= @property.price_per_token %></p>
+<p><strong>Available Tokens:</strong> <%= @property.available_tokens %></p>
+<p><strong>Annual Yield:</strong> <%= @property.annual_rent_yield %>%</p>
+
+<hr>
+
+<% if user_signed_in? %>
+  <h3>Buy Tokens (Demo)</h3>
+  <form>
+    <input type="number" placeholder="Tokens to buy" min="1" />
+    <button>Simulate Purchase</button>
+  </form>
+<% else %>
+  <p><%= link_to "Login", new_user_session_path %> to invest in this property.</p>
+<% end %>

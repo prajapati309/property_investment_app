@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DefiRealEstate</title>
+    <title>DeFi Real Estate</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body style="font-family: Arial; background: #f4f4f4; margin:0;">
+    <nav style="background:#111;color:#fff;padding:15px;">
+      <span style="font-size:18px;font-weight:bold;">🏠 DeFi Real Estate</span>
+
+      <span style="float:right;">
+        <% if user_signed_in? %>
+          Welcome, <%= current_user.email %> |
+          <% if current_user.admin? %>
+            <%= link_to "Admin Panel", admin_properties_path, style:"color:white;" %>
+          <% end %> |
+          <%= button_to "Logout", destroy_user_session_path, method: :delete, style:"color:white;" %> |
+          | <%= link_to "Dashboard", dashboard_path, style:"color:white;" %>
+        <% else %>
+          <%= link_to "Login", new_user_session_path, style:"color:white;margin-right:10px;" %>
+          <%= link_to "Sign Up", new_user_registration_path, style:"color:white;" %>
+        <% end %>
+      </span>
+    </nav>
+
+    <div style="padding:20px;">
+      <%= yield %>
+    </div>
+
   </body>
 </html>

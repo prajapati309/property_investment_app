@@ -1,0 +1,24 @@
+<h1>Admin – Properties</h1>
+
+<%= link_to "➕ Add New Property", new_admin_property_path %>
+
+<table border="1" cellpadding="10" cellspacing="0" style="margin-top:20px;">
+  <tr>
+    <th>Title</th>
+    <th>Location</th>
+    <th>Price</th>
+    <th>Actions</th>
+  </tr>
+
+  <% @properties.each do |p| %>
+    <tr>
+      <td><%= p.title %></td>
+      <td><%= p.location %></td>
+      <td>$<%= p.price_per_token %></td>
+      <td>
+        <%= link_to "Edit", edit_admin_property_path(p) %> |
+        <%= link_to "Delete", admin_property_path(p), method: :delete, data: { confirm: "Are you sure?" } %>
+      </td>
+    </tr>
+  <% end %>
+</table>

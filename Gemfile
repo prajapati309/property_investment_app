@@ -1,19 +1,27 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.3.0"
+# ruby "3.3.0"
+ruby "3.4.7"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.4"
+# gem "rails", "~> 7.0.4"
+gem "rails", "~> 8.0.0"
+gem "pg", ">= 1.5"
+gem "puma", "~> 6.4"
+# gem "sassc-rails", "~> 2.1"
+gem "turbo-rails", "~> 2.0"   # Turbo 8
+gem "stimulus-rails", "~> 1.3"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "sprockets-rails"
+# gem "sprockets-rails"
+gem "propshaft"
 
 # Use postgresql as the database for Active Record
-gem "pg", "~> 1.1"
+# gem "pg", "~> 1.1"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 5.0"
+# gem "puma", "~> 5.0"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
@@ -59,5 +67,14 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
-  gem "webdrivers"
+  # gem "webdrivers"
 end
+# gem 'devise'
+gem "devise", "~> 4.9" # latest Rails 8 compatible
+gem "sidekiq", "~> 7.2"
+gem "rspec-rails", "~> 7.0"
+gem "cssbundling-rails"
+gem "importmap-rails"
+# Gemfile
+gem "eth"
+

@@ -1,0 +1,44 @@
+<h1>Investor Dashboard</h1>
+
+<h3>Your Wallet</h3>
+<p><strong>Wallet Address:</strong> <%= current_user.wallet_address || "Not Connected" %></p>
+<p><strong>KYC Status:</strong> <%= current_user.kyc_status %></p>
+
+<hr>
+
+<h3>Your Investments</h3>
+<% if @invested_properties.any? %>
+  <ul>
+    <% @invested_properties.each do |property| %>
+      <li>
+        <strong><%= property.title %></strong> -
+        <%= link_to "View", property_path(property) %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No investments yet.</p>
+<% end %>
+
+<hr>
+
+<h3>Transactions</h3>
+<table border="1" cellpadding="8">
+  <tr>
+    <th>Property</th>
+    <th>Type</th>
+    <th>Tokens</th>
+    <th>Amount</th>
+    <th>Tx Hash</th>
+  </tr>
+
+  <% @transactions.each do |tx| %>
+    <tr>
+      <td><%= tx.property&.title %></td>
+      <td><%= tx.tx_type %></td>
+      <td><%= tx.token_amount %></td>
+      <td>$<%= tx.amount_usd %></td>
+      <td><%= tx.tx_hash %></td>
+    </tr>
+  <% end %>
+</table>
